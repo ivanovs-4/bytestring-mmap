@@ -91,7 +91,7 @@ import System.Posix
 --
 unsafeMMapFile :: FilePath -> IO ByteString
 unsafeMMapFile path = do
-    fd   <- openFd path ReadOnly Nothing defaultFileFlags
+    fd   <- openFd path ReadOnly defaultFileFlags
     always (closeFd fd) $ do
         stat <- getFdStatus fd
         let size = fromIntegral (fileSize stat)
